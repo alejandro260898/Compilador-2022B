@@ -1,2 +1,7 @@
-# Compilador-2022B
-Este es un pequeño proyecto para la clase de traductores de lenguaje II que a lo largo de las clases construiremos un compilador.
+# Compilador-2022B 
+
+En está parte se encontrarán todas las actividades de investigación y los reportes sobre cada parte del proyecto.
+
+### Actividad - 1.1 Mini Analizandor Léxico
+
+
