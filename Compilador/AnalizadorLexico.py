@@ -1,14 +1,18 @@
 import re
 from tkinter import SEPARATOR
+from Compilador.Interfaces.ConstantesAnalizadorLexico import ConstantesAnalizadorexico
 
-class AnalizadorLexico:
+from Ventana.Componentes.Tabla import Tabla
+
+class AnalizadorLexico(ConstantesAnalizadorexico):
     SEPARATOR_TOKEN = " "
-    EXPRESION_ID = "^[a-zA-Z][a-zA-Z0-9]*"
-    EXPRESION_NUM_REAL = "^[0-9][.]+[0-9]+"
-    EXPRESION_NUM_ENTERO = "^[0-9]+"
+    EXPRESION_ID = "^[a-zA-Z][a-zA-Z0-9]*$"
+    EXPRESION_NUM_REAL = "^[0-9]+[.][0-9]+$"
+    EXPRESION_NUM_ENTERO = "^[0-9]+[0-9]*$"
     
     def __init__(self, ventana):
         self.ventana = ventana
+        self.tabla = None
     
     def analizar(self, cadTokens):
         identificadores = []
@@ -25,7 +29,14 @@ class AnalizadorLexico:
                 else: numReales.append(token)
             else: identificadores.append(token)
         
-        self.ventana.imprimirTabla(None, "IDENTIFICADORES", identificadores)
-        self.ventana.imprimirTabla(None, "NÚMEROS REALES", numReales)
-        self.ventana.imprimirTabla(None, "NÚMEROS ENTEROS", numEnteros)
-        self.ventana.imprimirTabla(None, "ERRORES", errores)
+        self.tabla = Tabla()
+        self.tabla.fijaColumna(self.NOM_IDENTIDICADORES)
+        self.tabla.fijaColumna(self.NOM_NUM_REALES)
+        self.tabla.fijaColumna(self.NOM_NUM_ENTEROS)
+        self.tabla.fijaColumna(self.NOM_ERRORES)
+        self.tabla.fijaDatos(self.NOM_IDENTIDICADORES, identificadores)
+        self.tabla.fijaDatos(self.NOM_NUM_REALES, numReales)
+        self.tabla.fijaDatos(self.NOM_NUM_ENTEROS, numEnteros)
+        self.tabla.fijaDatos(self.NOM_ERRORES, errores)
+        
+        self.ventana.imprimirTabla(None, self.tabla.dameTabla())

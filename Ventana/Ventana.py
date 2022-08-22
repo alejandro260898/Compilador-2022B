@@ -9,8 +9,6 @@ class Ventana:
     def leerEntrada(self, mensaje):
         return input(f"{mensaje} : ")
     
-    def imprimirTabla(self, area = None, titulo = "", datos = []):
+    def imprimirTabla(self, area = None, tabla = None):
         print("\n")
-        print(f"{titulo}")
-        for dato in datos:
-            print(dato)
+        print(tabla)
