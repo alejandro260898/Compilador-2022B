@@ -58,6 +58,16 @@ En esta parte conocimos la importacia del analizador léxico, que apesar de que 
 
 ### Actividad - 1.3 Analizador léxico completo
 
+Para esta actividad se completo la parte analizador léxico, por lo cual ya no solo encuentra los identificadores o numeros (reales y enteros), si no que también encuentra operadores tanto relacionales, de igualdad o aritmeticos, palabras reservadas, tipos de datos, cadenas y caracteres como parentesis, llaves, etc. Para ello llamamos del analizador léxico el método **analizar** el cual recibe una cadena con todos los posibles lexemas.
 
+![01](Capturas%20Actividades/1.3/01.png)
 
+![02](Capturas%20Actividades/1.3/02.png)
 
+![03](Capturas%20Actividades/1.3/03.png)
+
+![04](Capturas%20Actividades/1.3/04.png)
+
+![05](Capturas%20Actividades/1.3/05.png)
+
+![05](Capturas%20Actividades/1.3/06.png)
