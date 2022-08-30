@@ -12,6 +12,12 @@ class Ventana:
     def imprime(self, mensaje):
         return print(f"[-] {mensaje}.")
     
+    def imprimeSeparacion(self, char = "-", maxCol = 20):
+        separacion = ""
+        for i in range(maxCol):
+            separacion += char
+        print(separacion)
+    
     def imprimirTabla(self, area = None, tabla = None):
         print("\n")
         print(tabla)

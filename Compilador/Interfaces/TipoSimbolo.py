@@ -1,4 +1,4 @@
-class ConstantesAnalizadorexico:
+class TipoSimbolo:
     NOM_IDENTIDICADORES = "ID´S"
     NOM_NUM_REALES = "REALES"
     NOM_NUM_ENTEROS = "ENTEROS"
@@ -28,6 +28,7 @@ class ConstantesAnalizadorexico:
     RETURN = 21
     ELSE = 22
     SIGNO_PESOS = 23
+    E = 24
     TOKENS = {
         IDENTIFICADOR: "ID",
         ENTERO: "Entero",
@@ -52,5 +53,6 @@ class ConstantesAnalizadorexico:
         WHILE: "while",
         RETURN: "return",
         ELSE: "else",
-        SIGNO_PESOS: "$"
+        SIGNO_PESOS: "$",
+        E: "E"
     }

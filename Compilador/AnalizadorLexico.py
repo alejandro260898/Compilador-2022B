@@ -1,11 +1,11 @@
 import re
-from Compilador.Interfaces.ConstantesAnalizadorLexico import ConstantesAnalizadorexico
+from Compilador.Interfaces.TipoSimbolo import TipoSimbolo
 from Compilador.Interfaces.Patrones import Patrones
 from Compilador.Lexema import Lexema
 from Ventana.Componentes.Tabla import Tabla
 from Ventana.Ventana import Ventana
 
-class AnalizadorLexico(ConstantesAnalizadorexico, Patrones):
+class AnalizadorLexico(TipoSimbolo, Patrones):
     SEPARATOR_LEXEMA = " "
     
     def __init__(self, ventana:Ventana):
@@ -102,8 +102,11 @@ class AnalizadorLexico(ConstantesAnalizadorexico, Patrones):
             else:
                 self.ventana.imprime(f"Simbolo desconocido: {lexema}")
                 break
+        self.inicializarCuentaSimbolos()
+        
+    def inicializarCuentaSimbolos(self):
         self.cuentaSimbolos = len(self.simbolos) - 1
-    
+        
     def terminado(self):
         return self.cuentaSimbolos >= 0
     

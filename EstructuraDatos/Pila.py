@@ -14,3 +14,9 @@ class Pila:
     
     def isEmpty(self):
         return self.items == []
+    
+    def empty(self):
+        return self.items.clear()
+    
+    def showYourself(self):
+        return self.items
