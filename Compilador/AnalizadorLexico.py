@@ -98,16 +98,16 @@ class AnalizadorLexico(ConstantesAnalizadorexico, Patrones):
     def analizar(self, cadLexemas = ""):
         for lexema in re.split(self.SEPARATOR_LEXEMA, cadLexemas):
             tokenID = self.encontrarToken(lexema)
-            if(tokenID != self.ERROR):
+            if(tokenID != self.ERROR): self.simbolos.insert(0, Lexema(tokenID, lexema))
+            else:
                 self.ventana.imprime(f"Simbolo desconocido: {lexema}")
                 break
-            else: self.simbolos.insert(0, Lexema(tokenID, lexema))
         self.cuentaSimbolos = len(self.simbolos) - 1
     
     def terminado(self):
-        return self.cuentaSimbolos == 0
+        return self.cuentaSimbolos >= 0
     
-    def sigSimbolo(self):
+    def sigSimbolo(self) -> Lexema:
         lexema = self.simbolos[self.cuentaSimbolos]
         self.cuentaSimbolos -= 1
         return lexema

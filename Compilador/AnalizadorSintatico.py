@@ -14,4 +14,5 @@ class AnalizaroSintatico(ConstantesAnalizadorexico):
         self.pila.push(0)
         while(lexico.terminado()):
             lexema = lexico.sigSimbolo()
+            self.ventana.imprime(lexema.dameSimbolo())
         return 0

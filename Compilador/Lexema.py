@@ -1,7 +1,7 @@
 class Lexema:
     def __init__(self, id = 0, simbolo = ""):
         self.id = id
-        self.simbolo = ""
+        self.simbolo = simbolo
         
     def fijaTokenID(self, id):
         self.id = id
