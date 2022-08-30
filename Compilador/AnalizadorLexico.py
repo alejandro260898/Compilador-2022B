@@ -1,6 +1,7 @@
 import re
 from Compilador.Interfaces.ConstantesAnalizadorLexico import ConstantesAnalizadorexico
 from Compilador.Interfaces.Patrones import Patrones
+from Compilador.Lexema import Lexema
 from Ventana.Componentes.Tabla import Tabla
 from Ventana.Ventana import Ventana
 
@@ -11,6 +12,8 @@ class AnalizadorLexico(ConstantesAnalizadorexico, Patrones):
         self.ventana = ventana
         self.tabla = None
         self.lexemas = {}
+        self.simbolos = []
+        self.cuentaSimbolos = 0
 
     
     def inicializarTablaLexemas(self):
@@ -70,7 +73,7 @@ class AnalizadorLexico(ConstantesAnalizadorexico, Patrones):
             self.tabla.fijaDatos(col, datos)
         self.ventana.imprimirTabla(None, self.tabla.dameTabla())
         
-    def analizar(self, cadLexemas = ""):
+    def analizarConTabla(self, cadLexemas = ""):
         self.inicializarTablaLexemas()
         for lexema in re.split(self.SEPARATOR_LEXEMA, cadLexemas):
             tokenID = self.encontrarToken(lexema)
@@ -91,3 +94,20 @@ class AnalizadorLexico(ConstantesAnalizadorexico, Patrones):
             self.tabla.fijaColumna(col)
             self.tabla.fijaDatos(col, datos)
         if(cuentaColumnas > 0): self.ventana.imprimirTabla(None, self.tabla.dameTabla())
+        
+    def analizar(self, cadLexemas = ""):
+        for lexema in re.split(self.SEPARATOR_LEXEMA, cadLexemas):
+            tokenID = self.encontrarToken(lexema)
+            if(tokenID != self.ERROR):
+                self.ventana.imprime(f"Simbolo desconocido: {lexema}")
+                break
+            else: self.simbolos.insert(0, Lexema(tokenID, lexema))
+        self.cuentaSimbolos = len(self.simbolos) - 1
+    
+    def terminado(self):
+        return self.cuentaSimbolos == 0
+    
+    def sigSimbolo(self):
+        lexema = self.simbolos[self.cuentaSimbolos]
+        self.cuentaSimbolos -= 1
+        return lexema
