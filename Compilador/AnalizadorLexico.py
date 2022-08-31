@@ -108,9 +108,11 @@ class AnalizadorLexico(TipoSimbolo, Patrones):
         self.cuentaSimbolos = len(self.simbolos) - 1
         
     def terminado(self):
-        return self.cuentaSimbolos >= 0
+        return self.cuentaSimbolos < 0
     
     def sigSimbolo(self) -> Lexema:
-        lexema = self.simbolos[self.cuentaSimbolos]
-        self.cuentaSimbolos -= 1
+        if(self.terminado()): lexema = Lexema(self.SIGNO_PESOS, self.TOKENS[self.SIGNO_PESOS])
+        else:
+            lexema = self.simbolos[self.cuentaSimbolos]
+            self.cuentaSimbolos -= 1
         return lexema

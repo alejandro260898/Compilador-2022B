@@ -13,14 +13,14 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
         
     def inicializarGramatica(self):
         self.gramatica = {
-            self.E:             [1,  0,  0,  0,  0],
-            self.SIGNO_PESOS:   [0, -1,  0,  0, -2],
-            self.OP_SUMA:       [0,  0,  3,  0,  0],
-            self.IDENTIFICADOR: [2,  0,  0,  4,  0],
-            # self.E:             [1,  0,  0,  4,  0],
-            # self.SIGNO_PESOS:   [0, -1, -3,  0, -2],
+            # self.E:             [1,  0,  0,  0,  0],
+            # self.SIGNO_PESOS:   [0, -1,  0,  0, -2],
             # self.OP_SUMA:       [0,  0,  3,  0,  0],
-            # self.IDENTIFICADOR: [2,  0,  0,  2,  0],
+            # self.IDENTIFICADOR: [2,  0,  0,  4,  0],
+            self.E:             [1,  0,  0,  4,  0],
+            self.SIGNO_PESOS:   [0, -1, -3,  0, -2],
+            self.OP_SUMA:       [0,  0,  3,  0,  0],
+            self.IDENTIFICADOR: [2,  0,  0,  2,  0],
         }
         
     def limpiarPila(self, totalReducciones, accion):
@@ -33,23 +33,29 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
         self.inicializarGramatica()
         self.pila.push(self.TOKENS[self.SIGNO_PESOS])
         self.pila.push(0)
-        while(lexico.terminado()):
+        while(not lexico.terminado()):
             lexema = lexico.sigSimbolo()
             # fil = al tope de la pila y col = al token ID del simbolo etregado por el lexema
             accion = self.gramatica[lexema.dameTokenID()][self.pila.top()]
             
-            self.ventana.imprime(self.pila.showYourself())
-            self.ventana.imprime(lexema.dameSimbolo())
-            self.ventana.imprime(accion)
-            self.ventana.imprimeSeparacion()
-            
-            self.pila.push(lexema.dameSimbolo())
-            self.pila.push(accion)
+            if(accion != 0):
+                self.ventana.imprime(self.pila.showYourself())
+                self.ventana.imprime(lexema.dameSimbolo())
+                self.ventana.imprime(accion)
+                self.ventana.imprimeSeparacion()
+                
+                self.pila.push(lexema.dameSimbolo())
+                self.pila.push(accion)
+            else:
+               self.ventana.imprime(f"Error de sintaxis en: {lexema.dameSimbolo()}")
+               return 1
         
-        lexema = Lexema(self.SIGNO_PESOS, self.TOKENS[self.SIGNO_PESOS])
+        lexema = lexico.sigSimbolo()
         while(lexema.dameTokenID() == self.SIGNO_PESOS):
             accion = self.gramatica[lexema.dameTokenID()][self.pila.top()]
             if(accion == self.R0):
+                self.ventana.imprime(self.pila.showYourself())
+                self.ventana.imprime(lexema.dameSimbolo())
                 self.ventana.imprime(f"Reducción {self.REDUCCIONES[self.R0]}, aceptación")
                 break
             else:
@@ -58,4 +64,5 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
                 self.ventana.imprime(f"Reducción {self.REDUCCIONES[accion]}")
                 self.ventana.imprimeSeparacion()
                 self.limpiarPila(self.POPS[accion], accion)
+        return 0
             

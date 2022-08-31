@@ -71,3 +71,25 @@ Para esta actividad se completo la parte analizador léxico, por lo cual ya no s
 ![05](Capturas%20Actividades/1.3/05.png)
 
 ![05](Capturas%20Actividades/1.3/06.png)
+
+### Actividad - 1.5 Mini Analizador Sintatico
+
+Para esta parte se realizo la gramatica para la suma de dos o más variables. En esta parte del proyecto se incluye la clase Analizador sintatico y una estructura pila que será de gran ayuda al analizar la gramatica. Por otro lado al analizador lexico se le hizo algunas mejoras para que le pueda entregar de una manera más legible los simbolos al analizador sintatico.
+
+#### **hola + mundo**
+
+![01](Capturas%20Actividades/1.5/01-01.png)
+
+![02](Capturas%20Actividades/1.5/01-02.png)
+
+![03](Capturas%20Actividades/1.5/01-03.png)
+
+#### **a + b + c + d + e + f**
+
+![01](Capturas%20Actividades/1.5/02-01.png)
+
+![02](Capturas%20Actividades/1.5/02-02.png)
+
+![03](Capturas%20Actividades/1.5/02-03.png)
+
+![04](Capturas%20Actividades/1.5/02-04.png)
