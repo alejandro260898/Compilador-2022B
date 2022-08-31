@@ -5,3 +5,7 @@ class Reducciones:
         R0: 0,
         R1: 1,
     }
+    POPS = {
+        R0: 0,
+        R1: 6,
+    }
