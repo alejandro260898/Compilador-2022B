@@ -3,7 +3,7 @@ from Compilador.AnalizadorSintatico import AnalizaroSintatico
 from Ventana.Ventana import Ventana
 
 def __main__():
-    ventana = Ventana("Compilador V3")
+    ventana = Ventana("Compilador V4")
     analizadorLexico = AnalizadorLexico(ventana)
     analizadorSintatico = AnalizaroSintatico(ventana)
     

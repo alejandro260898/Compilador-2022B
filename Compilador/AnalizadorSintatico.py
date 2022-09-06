@@ -26,12 +26,12 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
     def limpiarPila(self, totalReducciones, accion):
         for i in range(totalReducciones):
             self.pila.pop()
-        self.pila.push(self.TOKENS[self.E])
+        self.pila.push(Lexema(self.E, self.TOKENS[self.E]))
         self.pila.push(self.REDUCCIONES[accion])
         
     def analizar(self, lexico:AnalizadorLexico):
         self.inicializarGramatica()
-        self.pila.push(self.TOKENS[self.SIGNO_PESOS])
+        self.pila.push(Lexema(self.SIGNO_PESOS, self.TOKENS[self.SIGNO_PESOS]))
         self.pila.push(0)
         while(not lexico.terminado()):
             lexema = lexico.sigSimbolo()
@@ -44,7 +44,7 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
                 self.ventana.imprime(accion)
                 self.ventana.imprimeSeparacion()
                 
-                self.pila.push(lexema.dameSimbolo())
+                self.pila.push(lexema)
                 self.pila.push(accion)
             else:
                self.ventana.imprime(f"Error de sintaxis en: {lexema.dameSimbolo()}")
