@@ -93,3 +93,15 @@ Para esta parte se realizo la gramatica para la suma de dos o más variables. En
 ![03](Capturas%20Actividades/1.5/02-03.png)
 
 ![04](Capturas%20Actividades/1.5/02-04.png)
+
+### Actividad - 1.6 Analizador Sintáctico (Implementación usando Objetos)
+
+En esta parte del proyecto solo se modifico la pila del analizador sintático para que ahora almacene objetos en vez de solo caracteres. Por lo cual ahora la ejecución la veremos un poco más rara ya que python imprime solo la información del objeto.
+
+![01](Capturas%20Actividades/1.6/01.png)
+
+![02](Capturas%20Actividades/1.6/02.png)
+
+![03](Capturas%20Actividades/1.6/03.png)
+
+![04](Capturas%20Actividades/1.6/04.png)
