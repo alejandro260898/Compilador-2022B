@@ -1,18 +1,17 @@
-from Compilador.Lexema import Lexema
-
+from Compilador.Nodo import Nodo
 
 class Pila:
     def __init__(self):
         self.items = []
         
-    def top(self) -> Lexema:
+    def top(self) -> Nodo:
         return self.items[len(self.items) - 1]
     
-    def push(self, item:Lexema):
+    def push(self, item:Nodo):
         self.items.append(item)
         return item
     
-    def pop(self) -> Lexema:
+    def pop(self) -> Nodo:
         return self.items.pop()
     
     def isEmpty(self) -> bool:

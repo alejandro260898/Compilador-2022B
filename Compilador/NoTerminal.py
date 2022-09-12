@@ -1,5 +1,5 @@
-from Compilador.Lexema import Lexema
+from Compilador.Nodo import Nodo
 
-class NoTerminal(Lexema):
+class NoTerminal(Nodo):
     def __init__(self, id, simbolo):
         self.__init__(id, simbolo)

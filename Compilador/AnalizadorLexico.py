@@ -1,7 +1,7 @@
 import re
 from Compilador.Interfaces.TipoSimbolo import TipoSimbolo
 from Compilador.Interfaces.Patrones import Patrones
-from Compilador.Lexema import Lexema
+from Compilador.Nodo import Nodo
 from Ventana.Componentes.Tabla import Tabla
 from Ventana.Ventana import Ventana
 
@@ -98,7 +98,7 @@ class AnalizadorLexico(TipoSimbolo, Patrones):
     def analizar(self, cadLexemas = ""):
         for lexema in re.split(self.SEPARATOR_LEXEMA, cadLexemas):
             tokenID = self.encontrarToken(lexema)
-            if(tokenID != self.ERROR): self.simbolos.insert(0, Lexema(tokenID, lexema))
+            if(tokenID != self.ERROR): self.simbolos.insert(0, Nodo(tokenID, lexema))
             else:
                 self.ventana.imprime(f"Simbolo desconocido: {lexema}")
                 break
@@ -110,8 +110,8 @@ class AnalizadorLexico(TipoSimbolo, Patrones):
     def terminado(self):
         return self.cuentaSimbolos < 0
     
-    def sigSimbolo(self) -> Lexema:
-        if(self.terminado()): lexema = Lexema(self.SIGNO_PESOS, self.TOKENS[self.SIGNO_PESOS])
+    def sigSimbolo(self) -> Nodo:
+        if(self.terminado()): lexema = Nodo(self.SIGNO_PESOS, self.TOKENS[self.SIGNO_PESOS])
         else:
             lexema = self.simbolos[self.cuentaSimbolos]
             self.cuentaSimbolos -= 1

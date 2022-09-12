@@ -1,7 +1,7 @@
 from Compilador.AnalizadorLexico import AnalizadorLexico
 from Compilador.Interfaces.Reducciones import Reducciones
 from Compilador.Interfaces.TipoSimbolo import TipoSimbolo
-from Compilador.Lexema import Lexema
+from Compilador.Nodo import Nodo
 from EstructuraDatos.Pila import Pila
 from Ventana.Ventana import Ventana
 
@@ -26,12 +26,12 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
     def limpiarPila(self, totalReducciones, accion):
         for i in range(totalReducciones):
             self.pila.pop()
-        self.pila.push(Lexema(self.E, self.TOKENS[self.E]))
+        self.pila.push(Nodo(self.E, self.TOKENS[self.E]))
         self.pila.push(self.REDUCCIONES[accion])
         
     def analizar(self, lexico:AnalizadorLexico):
         self.inicializarGramatica()
-        self.pila.push(Lexema(self.SIGNO_PESOS, self.TOKENS[self.SIGNO_PESOS]))
+        self.pila.push(Nodo(self.SIGNO_PESOS, self.TOKENS[self.SIGNO_PESOS]))
         self.pila.push(0)
         while(not lexico.terminado()):
             lexema = lexico.sigSimbolo()

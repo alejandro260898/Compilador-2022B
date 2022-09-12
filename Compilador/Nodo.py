@@ -1,4 +1,4 @@
-class Lexema:
+class Nodo:
     def __init__(self, id = 0, simbolo = ""):
         self.id = id
         self.simbolo = simbolo
