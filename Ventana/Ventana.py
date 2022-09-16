@@ -10,7 +10,7 @@ class Ventana:
         return input(f"{mensaje} : ")
     
     def imprime(self, mensaje):
-        return print(f"[-] {mensaje}.")
+        return print(f"[-] {mensaje}")
     
     def imprimeSeparacion(self, char = "-", maxCol = 20):
         separacion = ""

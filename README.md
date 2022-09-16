@@ -105,3 +105,22 @@ En esta parte del proyecto solo se modifico la pila del analizador sintático pa
 ![03](Capturas%20Actividades/1.6/03.png)
 
 ![04](Capturas%20Actividades/1.6/04.png)
+
+### Notas:
+
+1. desplazamiento apilamos
+2. reducion desapilamos
+3. tope de la pila con el nombre del bloque de reducion
+4. guardar en las reduciones el numero de simbolos a pop y \e se queda igual
+5. si solo sale un numero en la tabla de popea igual y se compara con el simbolo
+6. cuando se reduce se compara con el nombre de la reducion
+
+class R9:Nodo {
+    tipo
+    id
+    Nodo param
+    Nodo BF
+
+    muestra()
+    validar()
+}

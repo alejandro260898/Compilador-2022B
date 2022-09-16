@@ -2,17 +2,15 @@ from Compilador.AnalizadorLexico import AnalizadorLexico
 from Compilador.AnalizadorSintatico import AnalizaroSintatico
 from Ventana.Ventana import Ventana
 
+
 def __main__():
-    ventana = Ventana("Compilador V4")
-    analizadorLexico = AnalizadorLexico(ventana)
-    analizadorSintatico = AnalizaroSintatico(ventana)
-    
+    ventana = Ventana("Compilador V5")
     ventana.mostrarte()
-    cadTokens =  ventana.leerEntrada("Ingrese sus tokens separados por espacios")
+    cadSimbolos = ventana.leerEntrada("Ingrese sus simbolos")
     
-    # analizadorLexico.analizarSencillamente(cadTokens)
-    # analizadorLexico.analizarConTabla(cadTokens)
-    analizadorLexico.analizar(cadTokens)
-    analizadorSintatico.analizar(analizadorLexico)
+    analizadorLexico = AnalizadorLexico(cadSimbolos, ventana)
+    analizadorSintatico = AnalizaroSintatico(ventana, analizadorLexico)
+    if(analizadorSintatico.analizar()): print("Compilación con errores") 
+    else: print("Compilación OK")
     
 __main__()

@@ -21,4 +21,8 @@ class Pila:
         self.items.clear()
     
     def showYourself(self) -> list:
-        return self.items
+        itemsStr = ""
+        for item in self.items:
+            itemsStr += str(item) if type(item) == int else item.dameSimbolo()
+            itemsStr += '|'
+        return itemsStr[:-1]
