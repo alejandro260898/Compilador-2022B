@@ -106,6 +106,24 @@ En esta parte del proyecto solo se modifico la pila del analizador sintático pa
 
 ![04](Capturas%20Actividades/1.6/04.png)
 
+### Actividad - 1.7 Gramatica del compilador
+
+En esta parte del proyecto se incluyo la gramatica completa, para esto se leer el archivo compilador.cvs y con ella se crea una matriz que le servida al analizador sintatico. También se realizo mejoras al todo el proyecto para que sea un código más limpio y que termine por funcionar correctamente.
+
+![01](Capturas%20Actividades/1.7/01.png)
+
+![02](Capturas%20Actividades/1.7/02.png)
+
+![03](Capturas%20Actividades/1.7/03.png)
+
+![04](Capturas%20Actividades/1.7/04.png)
+
+![05](Capturas%20Actividades/1.7/05.png)
+
+![06](Capturas%20Actividades/1.7/06.png)
+
+![07](Capturas%20Actividades/1.7/07.png)
+
 ### Notas:
 
 1. desplazamiento apilamos
@@ -114,13 +132,4 @@ En esta parte del proyecto solo se modifico la pila del analizador sintático pa
 4. guardar en las reduciones el numero de simbolos a pop y \e se queda igual
 5. si solo sale un numero en la tabla de popea igual y se compara con el simbolo
 6. cuando se reduce se compara con el nombre de la reducion
-
-class R9:Nodo {
-    tipo
-    id
-    Nodo param
-    Nodo BF
-
-    muestra()
-    validar()
-}
+7. Los objetos no terminales deben contar con un metodo mostrar y otro validar, y tener sus elementos despopeados
