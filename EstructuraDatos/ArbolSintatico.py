@@ -16,3 +16,21 @@ class ArbolSintatico:
         
     def dameNodoActual(self) -> NoTerminal|None:
         return self.act
+    
+    def recorrer(self, nodoInicio:NoTerminal = None, tabulaciones = 0):
+        if(nodoInicio == None): nodoInicio = self.raiz
+        
+        tabs = ''
+        for i in range(tabulaciones):
+            if(i == tabulaciones - 1): tabs += 'L '
+            else: tabs += ' '
+        print(tabs+nodoInicio.dameSimbolo())
+        
+        for hijoNodo in nodoInicio.dameNodosHijos(): self.recorrer(hijoNodo, tabulaciones + 1)
+        tabulaciones += 1
+        for simbolo in nodoInicio.dameSimbolos(): 
+            tabs = ''
+            for i in range(tabulaciones):
+                if(i == tabulaciones - 1): tabs += 'L '
+                else: tabs += ' '
+            print(tabs+simbolo)

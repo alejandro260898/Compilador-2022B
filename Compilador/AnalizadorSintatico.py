@@ -46,8 +46,8 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
             nodo.fijaSimbolo('\e')
         else:
             for n in nodosPops:
-                if(type(n) == NoTerminal): nodo.fijaNodoHijo(nodo)
-                elif(type(n) == Nodo):
+                if(type(n) == NoTerminal): nodo.fijaNodoHijo(n)
+                elif(type(n) == Nodo): 
                     token = n.dameTokenID()
                     if(token == self.PUNTO_COMA or token == self.COMA or token == self.PARENTESIS_DER or
                     token == self.PARENTESIS_IZQ or token == self.LLAVE_DER or token == self.LLAVE_IZQ):
@@ -56,7 +56,6 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
                 else: continue
         
         act = self.arbolSintatico.dameNodoActual()
-        print('inicio')
         if(act != None): 
             act.fijaPadre(nodo)
         self.arbolSintatico.fijaNodoActual(nodo)
@@ -66,10 +65,14 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
         cuentaPops = 0
         reduccionID = (-1 * int(reduccion[1:]))
         totalReducciones = self.POPS[reduccionID] * 2
+        
+        nodo = NoTerminal(self.REDUCCIONES_ID[reduccionID], self.REDUCCIONES[reduccionID])
         while(cuentaPops < totalReducciones):
             cuentaPops += 1
-            nodosPops.append(self.pila.pop())
-        nodo = NoTerminal(self.REDUCCIONES_ID[reduccionID], self.REDUCCIONES[reduccionID])
+            nodoPop = self.pila.pop()
+            if(nodoPop != nodo):
+                nodosPops.append(nodoPop)
+        
         self.crearRama(nodo, nodosPops)
         return nodo
     
@@ -91,6 +94,8 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
                     if(self.REDUCCION == accionCad): #Se sacarán elementos de la pila
                         if(accion == self.R0):
                             self.arbolSintatico.fijaRaiz(self.arbolSintatico.dameNodoActual())
+                            print("\n****** Árbol Sintatico ******")
+                            self.arbolSintatico.recorrer()
                             return self.GRAMATICA_OK
                         else:
                             simboloR = self.reduccir(accion)

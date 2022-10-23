@@ -8,7 +8,7 @@ class NoTerminal(Nodo):
         Nodo.__init__(self, id, nombre)
         
     def fijaPadre(self, nodo):
-        self.simbolos.append(nodo)
+        self.padre = nodo
         
     def fijaSimbolo(self, simbolo:str):
         self.simbolos.append(simbolo)
