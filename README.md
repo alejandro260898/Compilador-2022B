@@ -156,4 +156,4 @@ Para esta parte se debio mostrar el arbol sintatico que será utilizado por el a
 5. si solo sale un numero en la tabla de popea igual y se compara con el simbolo
 6. cuando se reduce se compara con el nombre de la reducion
 7. Los objetos no terminales deben contar con un metodo mostrar y otro validar, y tener sus elementos despopeados
-8. Las tablas de simbolos tendrán 3 columnas: nombre, tipo, hambito (global, main o nomFunción)
+8. Las tablas de simbolos tendrán 3 columnas: nombre, tipo, ámbito (global, main o nomFunción)
