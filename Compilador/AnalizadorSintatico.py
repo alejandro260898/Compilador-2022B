@@ -6,7 +6,6 @@ from EstructuraDatos.ArbolSintatico import ArbolSintatico
 from Compilador.Nodo import Nodo
 from EstructuraDatos.Pila import Pila
 from Ventana.Ventana import Ventana
-
 import csv
 
 class AnalizaroSintatico(TipoSimbolo, Reducciones):
@@ -21,7 +20,7 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
         self.analizadorLexico = analizadorLexico
         self.gramatica = []
         self.pila = Pila()
-        self.arbolSintatico = ArbolSintatico()
+        self.arbolSintatico = ArbolSintatico(ventana=ventana)
         
         self.inicializarGramatica()
         
@@ -39,11 +38,11 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
         self.ventana.imprime('simbolo: '+simbolo.dameSimbolo())
         self.ventana.imprime('accion: '+accion)
         self.ventana.imprime(self.pila.showYourself())
-        self.ventana.imprimeSeparacion()
+        self.ventana.imprimeSeparacion(maxCol=40)
     
     def crearRama(self, nodo:NoTerminal, nodosPops:list):
         if(len(nodosPops) == 0):
-            nodo.fijaSimbolo('\e')
+            nodo.fijaSimbolo(Nodo(simbolo='\e'))
         else:
             for n in nodosPops:
                 if(type(n) == NoTerminal): nodo.fijaNodoHijo(n)
@@ -52,7 +51,7 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
                     if(token == self.PUNTO_COMA or token == self.COMA or token == self.PARENTESIS_DER or
                     token == self.PARENTESIS_IZQ or token == self.LLAVE_DER or token == self.LLAVE_IZQ):
                         continue
-                    else: nodo.fijaSimbolo(n.dameSimbolo())
+                    else: nodo.fijaSimbolo(n)
                 else: continue
         
         act = self.arbolSintatico.dameNodoActual()
@@ -94,7 +93,7 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
                     if(self.REDUCCION == accionCad): #Se sacarán elementos de la pila
                         if(accion == self.R0):
                             self.arbolSintatico.fijaRaiz(self.arbolSintatico.dameNodoActual())
-                            print("\n****** Árbol Sintatico ******")
+                            self.ventana.imprimeTitulo(titulo="Árbol Sintatico")
                             self.arbolSintatico.recorrer()
                             return self.GRAMATICA_OK
                         else:
@@ -113,4 +112,7 @@ class AnalizaroSintatico(TipoSimbolo, Reducciones):
                 else:
                     self.ventana.imprime(f"Error de sintaxis en: {simbolo.dameSimbolo()}")
                     return self.ERROR_GRAMATICAL
+                
+    def dameArbolSintatico(self) -> ArbolSintatico:
+        return self.arbolSintatico
             

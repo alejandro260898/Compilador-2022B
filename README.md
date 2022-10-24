@@ -124,6 +124,29 @@ En esta parte del proyecto se incluyo la gramatica completa, para esto se leer e
 
 ![07](Capturas%20Actividades/1.7/07.png)
 
+### Actividad - 1.8 Árbol sintático
+
+Para esta parte se debio mostrar el arbol sintatico que será utilizado por el analizador semantico.
+
+![01](Capturas%20Actividades/1.8/01.png)
+![02](Capturas%20Actividades/1.8/02.png)
+![03](Capturas%20Actividades/1.8/03.png)
+![04](Capturas%20Actividades/1.8/04.png)
+![05](Capturas%20Actividades/1.8/05.png)
+![06](Capturas%20Actividades/1.8/06.png)
+![07](Capturas%20Actividades/1.8/07.png)
+![08](Capturas%20Actividades/1.8/08.png)
+![09](Capturas%20Actividades/1.8/09.png)
+![10](Capturas%20Actividades/1.8/10.png)
+![11](Capturas%20Actividades/1.8/11.png)
+![12](Capturas%20Actividades/1.8/12.png)
+![13](Capturas%20Actividades/1.8/13.png)
+![14](Capturas%20Actividades/1.8/14.png)
+![15](Capturas%20Actividades/1.8/15.png)
+![16](Capturas%20Actividades/1.8/16.png)
+![17](Capturas%20Actividades/1.8/17.png)
+![18](Capturas%20Actividades/1.8/18.png)
+
 ### Notas:
 
 1. desplazamiento apilamos

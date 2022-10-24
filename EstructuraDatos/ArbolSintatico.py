@@ -1,7 +1,9 @@
 from Compilador.NoTerminal import NoTerminal
+from Ventana.Ventana import Ventana
 
 class ArbolSintatico:
-    def __init__(self, raiz:NoTerminal = None):
+    def __init__(self, ventana:Ventana, raiz:NoTerminal = None):
+        self.ventana = ventana
         self.raiz = raiz
         self.act = None
         
@@ -24,7 +26,7 @@ class ArbolSintatico:
         for i in range(tabulaciones):
             if(i == tabulaciones - 1): tabs += 'L '
             else: tabs += ' '
-        print(tabs+nodoInicio.dameSimbolo())
+        self.ventana.imprime(tabs+nodoInicio.dameSimbolo(), tabulaciones)
         
         for hijoNodo in nodoInicio.dameNodosHijos(): self.recorrer(hijoNodo, tabulaciones + 1)
         tabulaciones += 1
@@ -33,4 +35,4 @@ class ArbolSintatico:
             for i in range(tabulaciones):
                 if(i == tabulaciones - 1): tabs += 'L '
                 else: tabs += ' '
-            print(tabs+simbolo)
+            self.ventana.imprime(tabs+simbolo.dameSimbolo(), tabulaciones)

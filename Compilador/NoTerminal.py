@@ -10,7 +10,7 @@ class NoTerminal(Nodo):
     def fijaPadre(self, nodo):
         self.padre = nodo
         
-    def fijaSimbolo(self, simbolo:str):
+    def fijaSimbolo(self, simbolo:Nodo):
         self.simbolos.append(simbolo)
         
     def fijaNodoHijo(self, nodo):
@@ -22,7 +22,7 @@ class NoTerminal(Nodo):
     def dameNodosHijos(self) -> list:
         return self.nodosHijos
     
-    def dameSimbolos(self) -> list:
+    def dameSimbolos(self) -> list[Nodo]:
         return self.simbolos
     
     

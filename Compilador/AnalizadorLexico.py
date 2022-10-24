@@ -2,18 +2,20 @@ import re
 from Compilador.Interfaces.TipoSimbolo import TipoSimbolo
 from Compilador.Interfaces.Patrones import Patrones
 from Compilador.Nodo import Nodo
+from Compilador.TablaSimbolos import TablaSimbolos
 from Ventana.Componentes.Tabla import Tabla
 from Ventana.Ventana import Ventana
 
 class AnalizadorLexico(TipoSimbolo, Patrones):
     SEPARATOR_LEXEMA = " "
     
-    def __init__(self, cadSimbolos:str, ventana:Ventana):
+    def __init__(self, cadSimbolos:str, ventana:Ventana, tablaSimbolos:TablaSimbolos = None):
         self.posInicialCadSimbolos = 0
         self.cuentaSimbolos = 0
         self.cadSimbolos = cadSimbolos
         self.ventana = ventana
         self.seguimientoSimbolos = {} #Fines demostrativos
+        self.tablaSimbolos = tablaSimbolos
         
         self.inicializarTablaLexemas()
     
@@ -112,6 +114,7 @@ class AnalizadorLexico(TipoSimbolo, Patrones):
                         self.cuentaSimbolos += 1
                         return Nodo(
                             patronID, 
-                            self.cadSimbolos[posInicialAnterior:self.posInicialCadSimbolos]
+                            self.cadSimbolos[posInicialAnterior:self.posInicialCadSimbolos],
+                            self.tablaSimbolos
                         )
             raise ValueError('Simbolo no correspondiente: '+self.cadSimbolos[self.posInicialCadSimbolos:])
