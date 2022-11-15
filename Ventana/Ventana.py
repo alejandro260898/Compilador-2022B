@@ -28,5 +28,5 @@ class Ventana:
         print(tituloDecorado)
     
     def imprimirTabla(self, area = None, tabla = None):
-        print("\n")
+        # print("\n")
         print(tabla)

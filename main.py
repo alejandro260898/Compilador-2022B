@@ -1,19 +1,17 @@
 from Compilador.AnalizadorLexico import AnalizadorLexico
 from Compilador.AnalizadorSemantico import AnalizadorSemantico
 from Compilador.AnalizadorSintatico import AnalizaroSintatico
-from Compilador.TablaSimbolos import TablaSimbolos
 from Ventana.Ventana import Ventana
 
 
 def __main__():
-    ventana = Ventana("Compilador V7")
+    ventana = Ventana("Compilador V8")
     ventana.mostrarte()
     cadSimbolos = ventana.leerEntrada("Ingrese sus simbolos")
 
-    tablaSimbolos = TablaSimbolos()
-    analizadorLexico = AnalizadorLexico(cadSimbolos, ventana, tablaSimbolos)
+    analizadorLexico = AnalizadorLexico(ventana, cadSimbolos)
     analizadorSintatico = AnalizaroSintatico(ventana, analizadorLexico)
-    analizadorSemantico = AnalizadorSemantico(ventana, tablaSimbolos)
+    analizadorSemantico = AnalizadorSemantico(ventana)
     if(analizadorSintatico.analizar()): print("Compilación con errores") 
     else: 
         analizadorSemantico.analizar(analizadorSintatico.dameArbolSintatico())

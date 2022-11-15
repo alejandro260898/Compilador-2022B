@@ -28,11 +28,11 @@ class ArbolSintatico:
             else: tabs += ' '
         self.ventana.imprime(tabs+nodoInicio.dameSimbolo(), tabulaciones)
         
-        for hijoNodo in nodoInicio.dameNodosHijos(): self.recorrer(hijoNodo, tabulaciones + 1)
         tabulaciones += 1
-        for simbolo in nodoInicio.dameSimbolos(): 
+        for simbolo in reversed(nodoInicio.dameSimbolos()): 
             tabs = ''
             for i in range(tabulaciones):
                 if(i == tabulaciones - 1): tabs += 'L '
                 else: tabs += ' '
             self.ventana.imprime(tabs+simbolo.dameSimbolo(), tabulaciones)
+        for hijoNodo in reversed(nodoInicio.dameNodosHijos()): self.recorrer(hijoNodo, tabulaciones)
