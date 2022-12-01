@@ -41,7 +41,19 @@ class AnalizadorSemantico:
                     self.tablaFunciones.fijaInfo(TablaSimbolos.NOMBRE, simbolo.dameSimbolo())
                     self.tablaFunciones.fijaInfo(TablaSimbolos.TIPO_DATO, tipoDato)
                     self.tablaFunciones.fijaInfo(TablaSimbolos.AMBITO, "$global")
-                    
+        elif(simbolo == Reducciones.REDUCCIONES[Reducciones.R10] or accion == Reducciones.REDUCCIONES[Reducciones.R10]):
+            accion = Reducciones.REDUCCIONES[Reducciones.R10]
+            for simbolo in reversed(nodoInicio.dameSimbolos()):
+                if(
+                    simbolo.dameTokenID() == TipoDato.INT or simbolo.dameTokenID() == TipoDato.FLOAT or
+                    simbolo.dameTokenID() == TipoDato.CHAR or simbolo.dameTokenID() == TipoDato.STRING
+                ):
+                    tipoDato = simbolo.dameSimbolo()
+                elif(simbolo.dameSimbolo() != '\e'):
+                    self.tablaSimbolos.fijaInfo(TablaSimbolos.NOMBRE, simbolo.dameSimbolo())
+                    self.tablaSimbolos.fijaInfo(TablaSimbolos.TIPO_DATO, tipoDato)
+                    self.tablaSimbolos.fijaInfo(TablaSimbolos.AMBITO, ambito)
+                
         for hijoNodo in reversed(nodoInicio.dameNodosHijos()): 
             self.verifica(hijoNodo, ambito, tipoDato, accion)
         
