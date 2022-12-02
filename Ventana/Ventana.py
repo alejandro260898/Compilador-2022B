@@ -6,8 +6,15 @@ class Ventana:
     def mostrarte(self):
         print(f"********** {self.titulo} **********\n")
         
-    def leerEntrada(self, mensaje):
-        return input(f"{mensaje} : ")
+    # def leerEntrada(self, mensaje):
+    #     return input(f"{mensaje} : ")
+    
+    def leerEntrada(self, ruta):
+        codigo = ""
+        with open(ruta) as archivo:
+            for linea in archivo:
+                codigo += linea
+        return codigo
     
     def imprime(self, mensaje:str, char = "-"):
         return print(f"[{char}] {mensaje}")

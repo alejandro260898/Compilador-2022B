@@ -11,7 +11,7 @@ class AnalizadorLexico(TipoSimbolo, Patrones):
     def __init__(self, ventana:Ventana, cadSimbolos:str):
         self.posInicialCadSimbolos = 0
         self.cuentaSimbolos = 0
-        self.cadSimbolos = cadSimbolos
+        self.cadSimbolos = re.sub(r'\s', '', cadSimbolos)
         self.ventana = ventana
         self.seguimientoSimbolos = {} #Fines demostrativos
         
