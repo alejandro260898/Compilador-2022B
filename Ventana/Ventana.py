@@ -1,10 +1,13 @@
 
 class Ventana:
+    NOM_ARCHIVO_LOG = "./resumen.txt"
+    
     def __init__(self, titulo):
+        self.archivo = open(self.NOM_ARCHIVO_LOG, "w")
         self.titulo = titulo
     
     def mostrarte(self):
-        print(f"********** {self.titulo} **********\n")
+        self.archivo.write(f"********** {self.titulo} **********\n")
         
     # def leerEntrada(self, mensaje):
     #     return input(f"{mensaje} : ")
@@ -17,13 +20,15 @@ class Ventana:
         return codigo
     
     def imprime(self, mensaje:str, char = "-"):
-        return print(f"[{char}] {mensaje}")
+        self.archivo.write(f"[{char}] {mensaje}\n")
     
     def imprimeSeparacion(self, char = "-", maxCol = 20):
         separacion = ""
         for i in range(maxCol):
             separacion += char
-        print(separacion)
+        separacion += "\n"
+            
+        self.archivo.write(separacion)
         
     def imprimeTitulo(self, char = "+", titulo:str = "", maxCol = 20):
         tituloDecorado = "\n"
@@ -32,8 +37,13 @@ class Ventana:
         tituloDecorado += titulo.upper()
         for i in range(int(maxCol/2)):
             tituloDecorado += char
-        print(tituloDecorado)
+        tituloDecorado += "\n"
+            
+        self.archivo.write(tituloDecorado)
     
     def imprimirTabla(self, area = None, tabla = None):
         # print("\n")
-        print(tabla)
+        self.archivo.write(tabla)
+        
+    def cerrar(self):
+        self.archivo.close()
