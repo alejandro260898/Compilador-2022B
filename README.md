@@ -147,6 +147,16 @@ Para esta parte se debio mostrar el arbol sintatico que será utilizado por el a
 ![17](Capturas%20Actividades/1.8/17.png)
 ![18](Capturas%20Actividades/1.8/18.png)
 
+### Actividad - Proyecto Final
+En esta sección el compilador ya debe esta terminado, yo solo pude hacer que funcionara con mi código de ejemplo
+todo lo demás funciona correctamente, pero pasar el codigo a ensamblador por medio de python me llevo más tiempo de lo esperado así que si se modifica el main.c estará correcto pero el resultado en ensamblador será el mismo.
+
+![01](Capturas%20Actividades/Final/01.png)
+![02](Capturas%20Actividades/Final/02.png)
+![03](Capturas%20Actividades/Final/03.png)
+![04](Capturas%20Actividades/Final/04.png)
+![05](Capturas%20Actividades/Final/05.png)
+
 ### Notas:
 
 1. desplazamiento apilamos
